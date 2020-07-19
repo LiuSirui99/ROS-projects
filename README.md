@@ -14,6 +14,29 @@ My learning process in ROS， including the setting and debugging processes.
 
 ### Setup
 
+- **For MacOS:** :white_check_mark:
+
+    Build with docker. 
+    ```
+   $  docker pull ct2034/vnc-ros-kinetic-full
+    ```
+    In case of `error : unauthorized: incorrect username or password`
+    ```
+     $ docker logout
+     $ docker login
+     ```
+     Run the server in the terminal:
+     ```
+     $ docker run -it --rm -p 6080:80 ct2034/vnc-ros-kinetic-full
+     ```
+     Then Browse <a href="http://127.0.0.1:6080/" target="_blank">`http://127.0.0.1:6080/`</a>.
+     
+     In case of `error: ROS waiting for master`
+     ```
+     $ roscore
+     ```
+     
+
 - **For Ubuntu:**
     
     Because I am using the ubuntu VM in MacOs, which is 32-bit. But ROS only supports amd64, which is 64-bit, so I can only install it from source. You can see the detailed process at <a href="https://opencv.org/releases/" target="_blank">`http://wiki.ros.org/melodic/Installation/Source`</a> 
