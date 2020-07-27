@@ -1,4 +1,4 @@
-<bold>ROS Notes</bold>
+ROS Notes
 
 1. create the workspace:
    $ mkdir -p <link:url>~/catkin_ws/src</link:url>
