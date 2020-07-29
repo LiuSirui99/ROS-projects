@@ -58,6 +58,43 @@ ROS Notes
 
 
 ROS 通信架构
+1. 最小进程单元为node。可执行文件在运行以后就成了一个、process，在ROS中叫做node。 通常一个node负责机器人的某一个单独功能。
+
+2. Master, 节点管理器。 node首先在master进行注册后才会被纳入整个ROS程序里。同时点对点通信也是由master管理。
+	$ roscore
+	**** 启动master，同时rosout（告知当前系统的状态）和parameter server（存储参数的服务器）也启动了。 
+
+	$ rosrun pkg_name node_name
+	**** 启动node
+
+	rosnode 命令： 
+	rosnode list: list current running nodes info
+	rosnode info node_name
+	rosnode kill node_name
+	rosnode ping: 测试连接节点
+	rosnode cleanup: 清除不可到达的节点的注册信息 
+
+3. Launch 文件
+	为了方便的一次性启动master和多个node
+	$ roslaunch pkg_name file_name.launch
+	写法示例： http://wiki.ros.org/roslaunch/XML
+
+4. Topic 主题
+	常用的一种异步通信方式（每一个node各司其职，没有协同工作）
+	适用于实时性，周期性的消息
+	发送时调用publish（）方法，发送完后立刻返回，不用等待反馈
+	subscriber 接收消息会进行处理，这个过程叫做回调（callback）：提前在代码中定义好一个处理函数，当有消息来就会被触发。
+
+	$ rostopic list
+	$ rostopic pub topic_name 向某个topic发布内容
+	$ rostopic find topic_type 查找某个类型的topic
+	$ rostopic type topic_name 查看某个topic的msg
+
+5. rviz 官网支持的3D可视化环境
+     
+
+
+	
 
 
 
